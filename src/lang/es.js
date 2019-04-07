@@ -79,7 +79,8 @@ export default {
     password: 'Contraseña',
     any: 'nada',
     thirdparty: 'Conectar con',
-    thirdpartyTips: 'No se puede simular en local, así que combine su propia simulación de negocios. ! !'
+    thirdpartyTips: 'No se puede simular en local, así que combine su propia simulación de negocios. ! !',
+    register: 'registro'
   },
   documentation: {
     documentation: 'Documentación',

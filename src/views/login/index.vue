@@ -42,8 +42,12 @@
         </span>
       </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">
+      <el-button :loading="loading" type="primary" style="width:50%;margin-bottom:30px;" @click.native.prevent="handleLogin">
         {{ $t('login.logIn') }}
+      </el-button>
+
+      <el-button :loading="loading" type="primary" style="width:50%;margin-bottom:30px;" @click.native.prevent="register">
+        {{ $t('login.register') }}
       </el-button>
 
       <div style="position:relative">
@@ -145,6 +149,24 @@ export default {
       })
     },
     handleLogin() {
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          this.loading = true
+          this.$store.dispatch('user/login', this.loginForm)
+            .then(() => {
+              this.$router.push({ path: this.redirect || '/' })
+              this.loading = false
+            })
+            .catch(() => {
+              this.loading = false
+            })
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    register() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
