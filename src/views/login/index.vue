@@ -46,14 +46,15 @@
         </el-form-item>
       </el-tooltip>
 
-      <el-button :loading="loading" type="primary" style="width:50%;margin-bottom:30px;" @click.native.prevent="handleLogin">
-        {{ $t('login.logIn') }}
-      </el-button>
+      <el-row>
+        <el-button :loading="loading" type="primary" style="width:45%;margin-bottom:30px;" @click.native.prevent="handleLogin">
+          {{ $t('login.logIn') }}
+        </el-button>
 
-      <el-button :loading="loading" type="primary" style="width:50%;margin-bottom:30px;" @click.native.prevent="register">
-        {{ $t('login.register') }}
-      </el-button>
-
+        <el-button :loading="loading" style="width:45%;margin-bottom:30px;margin-left: 0;float: right;" @click.native.prevent="register">
+          {{ $t('login.register') }}
+        </el-button>
+      </el-row>
       <div style="position:relative">
         <div class="tips">
           <span>{{ $t('login.username') }} : admin</span>
@@ -187,8 +188,10 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('user/login', this.loginForm)
+          this.$store.dispatch('user/register', this.loginForm)
             .then(() => {
+              console.log('1111111111111')
+
               this.$router.push({ path: this.redirect || '/' })
               this.loading = false
             })

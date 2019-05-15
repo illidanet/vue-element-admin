@@ -80,5 +80,16 @@ export default [
         data: 'success'
       }
     }
+  },
+  {
+    url: '/user/register',
+    type: 'post',
+    response: _ => {
+      console.log('register')
+      return {
+        code: 20000,
+        data: 'success'
+      }
+    }
   }
 ]

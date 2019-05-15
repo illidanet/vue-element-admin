@@ -23,3 +23,10 @@ export function logout() {
   })
 }
 
+export function register() {
+  console.log('register')
+  return request({
+    url: '/user/register',
+    method: 'post'
+  })
+}
